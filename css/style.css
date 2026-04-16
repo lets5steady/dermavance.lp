@@ -361,23 +361,17 @@ ul li a {
 h1 {
   font-size: 2rem;
   font-weight: 700;
-  margin-block-end: 2.5rem;
 }
 
 h2 {
   font-size: 1.5rem;
   font-weight: 700;
-  margin-block-end: 2.5rem;
 }
 
 h3,
 .header_navi {
   font-size: 1.25rem;
   font-weight: 700;
-}
-
-h3 {
-  margin-block-end: 2rem;
 }
 
 p span {
@@ -419,6 +413,8 @@ button.nomal {
 }
 
 .header_navi ul {
+  max-width: 327px;
+  margin-inline: auto;
   display: flex;
   justify-content: space-between;
   margin-block-end: 2.5rem;
@@ -428,12 +424,6 @@ button.nomal {
   transition: all 0.3s ease-out 0s;
 }
 
-.care p,
-.new_choice p,
-.beforeafter p {
-  margin-block-end: 2.5rem;
-}
-
 .firstview_img {
   width: 100%;
   aspect-ratio: 15/8;
@@ -441,6 +431,14 @@ button.nomal {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  display: flex;
+}
+
+.firstview_text {
+  max-width: 327px;
+  align-self: flex-end;
+  margin-inline-start: 1.5rem;
+  margin-block-end: -3rem;
 }
 
 .firstview {
@@ -469,8 +467,8 @@ button.nomal {
 }
 
 .new_choice_img {
-  width: 375px;
-  height: 375px;
+  max-width: 375px;
+  aspect-ratio: 1/1;
   margin-inline: auto;
   background-image: url(../../images/using_img01.jpg);
   background-repeat: no-repeat;
@@ -482,7 +480,7 @@ button.nomal {
   padding-block: 5rem;
 }
 
-.teatures h2 {
+.teatures {
   text-align: center;
 }
 
