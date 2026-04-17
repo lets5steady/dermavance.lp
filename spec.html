@@ -48,56 +48,57 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" type="module"></script>
 </head>
 <body>
-    <div class="wrapper">
-        <header>
-            <div class="header_logo">
-                <h1 class="header_logo_img">
-                    <img src="images/header_logo_transparent.png" alt="ロゴ">
-                </h1>
+    <header>
+        <div class="header_logo">
+            <h1 class="header_logo_img">
+                <img src="images/header_logo_transparent.png" alt="ロゴ">
+            </h1>
+        </div>
+        <div class="header_navi">
+            <ul>
+                <li><a href="index.html">概要</a></li>
+                <li><a href="detail.html">特徴</a></li>
+                <li><a href="buy.html">購入</a></li>
+                <li><a href="detail.html">仕様</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <section class="spec">
+            <h2>仕様・スペック</h2>
+            <div class="spec_table">
+                <table>
+                    <tr><th>電源方式</th><td>充電式</td></tr>
+                    <tr><th>充電時間</th><td>約2時間（急速充電：30分）</td></tr>
+                    <tr><th>連続使用時間</th><td>フル充電で約7日間使用可能</td></tr>
+                    <tr><th>電池種類</th><td>リチウムイオン電池</td></tr>
+                    <tr><th>消費電力</th><td>約7W(充電時)</td></tr>
+                    <tr><th>本体寸法</th><td>高さ18.0×幅4.0×奥行4.0cm</td></tr>
+                    <tr><th>質量</th><td>約230g</td></tr>
+                    <tr><th>コードの長さ</th><td>約1m（USBケーブル）</td></tr>
+                    <tr><th>電源</th><td>50-60Hz</td></tr>
+                    <tr><th>電圧</th><td>AC100～240V(自動電圧切替付)</td></tr>
+                    <tr><th>生産国</th><td>日本</td></tr>
+                </table>
             </div>
-            <div class="header_navi">
-                <ul>
-                    <li><a href="index.html">概要</a></li>
-                    <li><a href="detail.html">特徴</a></li>
-                    <li><a href="buy.html">購入</a></li>
-                    <li><a href="detail.html">仕様</a></li>
-                </ul>
-            </div>
-        </header>
-        <main>
-            <section class="spec">
-                <h2>仕様・スペック</h2>
-                <div class="spec_table">
-                    <table>
-                        <tr><th>電源方式</th><td>充電式</td></tr>
-                        <tr><th>充電時間</th><td>約2時間（急速充電：30分）</td></tr>
-                        <tr><th>連続使用時間</th><td>フル充電で約7日間使用可能</td></tr>
-                        <tr><th>電池種類</th><td>リチウムイオン電池</td></tr>
-                        <tr><th>消費電力</th><td>約7W(充電時)</td></tr>
-                        <tr><th>本体寸法</th><td>高さ18.0×幅4.0×奥行4.0cm</td></tr>
-                        <tr><th>質量</th><td>約230g</td></tr>
-                        <tr><th>コードの長さ</th><td>約1m（USBケーブル）</td></tr>
-                        <tr><th>電源</th><td>50-60Hz</td></tr>
-                        <tr><th>電圧</th><td>AC100～240V(自動電圧切替付)</td></tr>
-                        <tr><th>生産国</th><td>日本</td></tr>
-                    </table>
-                </div>
-                <p>●安全のため、使用上の注意をよく読んでご使用ください。</p>
-            </section>
-        </main>
-        <footer>
+            <p>●安全のため、使用上の注意をよく読んでご使用ください。</p>
+        </section>
+    </main>
+    <footer>
+        <div class="footer_inner">
             <h2>任せる美容から、<br>
                 自分で維持する美容へ。</h2>
             <ul class="footer_guide">
-                <li><a href="">お問い合わせ</a></li>
-                <li><a href="">配送について</a></li>
-                <li><a href="">返品について</a></li>
-                <li><a href="">保証期間について</a></li>
-                <li><a href="">ギフトラッピングについて</a></li>
-                <li><a href="">特定商取引法</a></li>
-                <li><a href="">プライバシーポリシー</a></li>
+                <li><a href="">-お問い合わせ</a></li>
+                <li><a href="">-配送について</a></li>
+                <li><a href="">-返品について</a></li>
+                <li><a href="">-保証期間について</a></li>
+                <li><a href="">-ギフトラッピングについて</a></li>
+                <li><a href="">-特定商取引法</a></li>
+                <li><a href="">-プライバシーポリシー</a></li>
             </ul>
             <div class="footer_logo">
                 <h1 class="footer_logo_img">
@@ -105,9 +106,8 @@
                 </h1>
                 <p><small>Copyright &copy;Dermavance Corporation</small></p>
             </div>
-            <button type="button" class="buy important">ご購入はこちら</button>
-        </footer>
-    </div>
-    
+            <div id="fixed_button"><button type="button" class="buy important">ご購入はこちら</button></div>
+        </div>
+    </footer>
 </body>
 </html>
