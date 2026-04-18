@@ -69,24 +69,61 @@
     <main>
         <section class="buy">
             <h2>購入</h2>
-            <div class="buy_product_images">
-                <img src="images/black_03.jpg" alt="商品の画像">
+            <div class="product_description">
+                <div class="carousel-container">
+                    <div class="slider" id="slider">
+                        <img src="images/black_01.jpg" id="black01" alt="ブラックの商品画像01">
+                        <img src="images/black_02.jpg" id="black02" alt="ブラックの商品画像02">
+                        <img src="images/black_03.jpg" id="black03" alt="ブラックの商品画像03">
+                        <img src="images/silver_01.jpg" id="silver01" alt="シルバーの商品画像01">
+                        <img src="images/silver_02.jpg" id="silver02" alt="シルバーの商品画像02">
+                        <img src="images/silver_03.jpg" id="silver03" alt="シルバーの商品画像03">
+                        <img src="images/proucts_front.jpg" id="products_front" alt="正面の商品画像">
+                        <img src="images/proucts_back.jpg" id="products_back" alt="背面の商品画像">
+                    </div>
+
+                    <div class="indicator-container" id="indicator">
+                        <span class="dot is-active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
+                        <span class="dot" data-index="3"></span>
+                        <span class="dot" data-index="4"></span>
+                        <span class="dot" data-index="5"></span>
+                        <span class="dot" data-index="6"></span>
+                        <span class="dot" data-index="7"></span>
+                    </div>
+                    <div class="color-selector">
+                    <div class="color-option" data-color-index="0">
+                        <div class="color-circle" style="background-color: #000;"></div>
+                        <span class="color-name">Black</span>
+                    </div>
+                    <div class="color-option" data-color-index="3">
+                        <div class="color-circle" style="background-color: #c0c0c0;"></div>
+                        <span class="color-name">Silver</span>
+                    </div>
+                    </div>
+                </div>
+                <h3>DERMAVANCE TRINITY-X</h3>
             </div>
-            <h3>DERMAVANCE TRINITY-X</h3>
-            <div>● ●</div>
-            <p>■価格：505,000円（税込）<br>
-                在庫状況：販売中<br>
-                最短お届け可能日：2026年4月10日(金)<br>
-                ■専用ジェルもご一緒にお届けします。<br>
-                *お手持ちの化粧水でもお使いいただけます。<br>
-                ※ 配送、返品については以下をご確認ください。<br>
-            </p>
-            <ul class="buypage_guide">
-                <li>配送について</li>
-                <li>返品について </li>
-                <li>保証期間について</li>
-                <li>ギフトラッピングについて</li>
-            </ul>
+            <div class="buy_text">
+                <p class="weight_medium">
+                    ■価格：505,000円（税込）<br>
+                    ■在庫状況：販売中<br>
+                    ■最短お届け可能日：2026年4月23日(木)
+                </p>
+                <p>
+                    ■専用ジェルもご一緒にお届けします。<br>
+                    <span>※お手持ちの化粧水でもお使いいただけます。</span><br>
+                    <span>※配送、返品については以下をご確認ください。</span>
+                </p>
+
+                <ul class="shopping_guide">
+                    <li><a href="">配送について</a></li>
+                    <li><a href="">返品について</a></li>
+                    <li><a href="">保証期間について</a></li>
+                    <li><a href="">ギフトラッピングについて</a></li>
+                </ul>
+            </div>
             <button type="button" class="order important">ご注文手続きへ</button>
         </section>
     </main>
@@ -94,7 +131,7 @@
         <div class="footer_inner">
             <h2>任せる美容から、<br>
                 自分で維持する美容へ。</h2>
-            <ul class="footer_guide">
+            <ul class="shopping_guide">
                 <li><a href="">-お問い合わせ</a></li>
                 <li><a href="">-配送について</a></li>
                 <li><a href="">-返品について</a></li>
