@@ -370,33 +370,18 @@ h2 {
 }
 
 h3,
-.header_navi,
-label {
+.header_navi {
   font-size: 1.25rem;
   font-weight: 700;
 }
 
-.weight_bold {
+.weight_bold,
+label {
   font-weight: 700;
 }
 
 .weight_medium {
   font-weight: 500;
-}
-
-.shopping_guide {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  font-size: 0.875rem;
-}
-
-.shopping_guide li a {
-  transition: all 0.3s ease-out 0s;
-}
-.shopping_guide li a:hover {
-  border-bottom: 1px dotted #c9ccd1;
 }
 
 button {
@@ -463,6 +448,60 @@ button.nomal:hover {
 }
 .header_navi ul li a:hover::after, .header_navi ul li a.is-active::after {
   opacity: 1;
+}
+
+/* フッター・購入ページ共通 */
+.shopping_guide {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 0.875rem;
+}
+
+.shopping_guide li a {
+  transition: all 0.3s ease-out 0s;
+}
+.shopping_guide li a:hover {
+  border-bottom: 1px dotted #c9ccd1;
+}
+
+/* 購入・購入手続きページ共通 */
+.slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory; /* 横方向に吸い付く設定 */
+  scrollbar-width: none; /* スクロールバーを隠す（Firefox） */
+}
+
+.slider::-webkit-scrollbar {
+  display: none; /* スクロールバーを隠す（Chrome/Safari） */
+}
+
+.slider img {
+  width: 100%;
+  flex-shrink: 0;
+  scroll-snap-align: start; /* 画像の端で止まる */
+}
+
+/* インジケーターの見た目 */
+.indicator-container {
+  margin-block-start: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: #c9ccd1;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.dot.is-active {
+  background-color: #f5f6f8; /* 現在の画像は白くする */
 }
 
 .footer_inner {
@@ -679,43 +718,6 @@ button.nomal:hover {
   gap: 1.5rem;
 }
 
-.slider {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory; /* 横方向に吸い付く設定 */
-  scrollbar-width: none; /* スクロールバーを隠す（Firefox） */
-}
-
-.slider::-webkit-scrollbar {
-  display: none; /* スクロールバーを隠す（Chrome/Safari） */
-}
-
-.slider img {
-  width: 100%;
-  flex-shrink: 0;
-  scroll-snap-align: start; /* 画像の端で止まる */
-}
-
-/* インジケーターの見た目 */
-.indicator-container {
-  margin-block-start: 0.75rem;
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-}
-
-.dot {
-  width: 14px;
-  height: 14px;
-  background-color: #c9ccd1;
-  border-radius: 50%;
-  transition: all 0.3s;
-}
-
-.dot.is-active {
-  background-color: #f5f6f8; /* 現在の画像は白くする */
-}
-
 /* カラーセレクターの見た目 */
 .color-selector {
   margin-block: 2.5rem;
@@ -783,8 +785,6 @@ button.nomal:hover {
 
 input,
 select {
-  width: -moz-fit-content;
-  width: fit-content;
   align-self: center;
   padding-inline: 0.75rem;
   background-color: #f5f6f8;
@@ -793,15 +793,48 @@ select {
   border-radius: 4px;
 }
 
+.select_product_inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.select_date p {
+  padding-block-start: 0.5em;
+  font-size: 0.875rem;
+  color: #c9ccd1;
+}
+
 .total {
   padding: 1rem;
   background-color: #c9ccd1;
   color: #1c1f23;
   display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-weight: 500;
+}
+
+.sub_total,
+.shippng,
+.total_amount {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total_amount .weight_bold {
+  font-size: 1.25rem;
+}
+
+.user_info_top,
+.payment_method_top {
+  text-align: start;
 }
 
 .error_userinfo,
 .error_payment {
+  width: -moz-fit-content;
+  width: fit-content;
   padding: 1rem;
   background-color: #c9ccd1;
   color: #1c1f23;
@@ -812,9 +845,11 @@ select {
 }
 
 .user_info_inner {
+  padding-block-end: 5rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  justify-content: center;
 }
 
 .user_info_inner label {
@@ -850,6 +885,25 @@ select {
 
 .notice {
   font-size: 0.75rem;
+}
+
+.delivery_address {
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.payment_inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.input_payment {
+  padding-block-end: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 #order_submit {

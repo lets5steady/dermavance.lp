@@ -69,58 +69,80 @@
     <main>
         <section class="select_product">
             <h2>ご購入手続き</h2>
-            <div class="checkout_product_images">
-                <img src="images/silver_gift.jpg" alt="商品の画像">
+            <div class="carousel-container">
+                <div class="slider" id="slider">
+                    <img src="images/black_gift.jpg" id="black_gift" alt="ブラックの商品画像01">
+                    <img src="images/silver_gift.jpg" id="silver_gift" alt="シルバーの商品画像01">
+                    <img src="images/proucts_front.jpg" id="products_front" alt="正面の商品画像">
+                    <img src="images/proucts_back.jpg" id="products_back" alt="背面の商品画像">
+                </div>
+                <div class="indicator-container" id="indicator">
+                    <span class="dot is-active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                    <span class="dot" data-index="3"></span>
+                </div>
             </div>
             <h3>DERMAVANCE TRINITY-X</h3>
             <form action="dermavance.form.com" method="post" name="select_product">
-                <div class="select_color">
-                    <label for="product_color">カラー：</label>
-                    <select name="product_color" id="product_color">
-                        <option value="">カラーを選択</option>
-                        <option value="Silver">Silver</option>
-                        <option value="Black">Black</option>
-                    </select>
+                <div class="select_product_inner">
+                    <div class="select_color">
+                        <label for="product_color">カラー：</label>
+                        <select name="product_color" id="product_color">
+                            <option value="">カラーを選択</option>
+                            <option value="Silver">Silver</option>
+                            <option value="Black">Black</option>
+                        </select>
+                    </div>
+                    <div class="select_Qty">
+                        <label for="product_Qty">個数：</label>
+                        <select name="product_Qty" id="product_Qty">
+                            <option value="">個数を選択</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                    <div class="select_date">
+                        <label for="input_date">お届け希望日：</label>
+                        <input type="date" name="input_date" id="input_date" value="{input_date}">
+                        <p>※最短お届け可能日は翌々日となります。</p>
+                    </div>
+                    <div class="select_wrapping">
+                        <label for="wrapping">ギフトラッピング：</label>
+                        <select name="wrapping" id="wrapping">
+                            <option value="希望を選択">希望を選択</option>
+                            <option value="希望する">希望する</option>
+                            <option value="希望しない">希望しない</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="select_Qty">
-                    <label for="product_Qty">個数：</label>
-                    <select name="product_Qty" id="product_Qty">
-                        <option value="">個数を選択</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div class="select_date">
-                    <label for="input_date">日付を選択：</label>
-                    <input type="date" name="input_date" id="input_date" value="{input_date}">
-                </div>
-                <div class="select_wrapping">
-                    <label for="wrapping">ギフトラッピング：</label>
-                    <select name="wrapping" id="wrapping">
-                        <option value="希望を選択">希望を選択</option>
-                        <option value="希望する">希望する</option>
-                        <option value="希望しない">希望しない</option>
-                    </select>
-                </div>
-                <dl class="total">
-                    <dt>商品合計</dt>
-                    <dd>505,000円</dd>
-                    <dt>送料</dt>
-                    <dd>0円</dd>
-                    <dt>合計（税込）</dt>
-                    <dd>505,000円</dd>
-                </dl>
             </form>
+            <div class="total">
+                    <div class="sub_total">
+                        <p>商品合計</p>
+                        <p>505,000円</p>
+                    </div>
+                    <div class="shippng">
+                        <p>送料</p>
+                        <p>0円</p>
+                    </div>
+                    <div class="total_amount">
+                        <p>合計（税込）</p>
+                        <p><span class="weight_bold">505,000</span>円</p>
+                    </div>
+            </div>
         </section>
         <section class="user_info">
             <h2>お客様情報・お届け先</h2>
-            <h3>お客様情報</h3>
-            <div class="error_userinfo">
-                <div class="error_icon">
-                    <img src="images/error_icon.png" alt="エラーアイコン">
+            <div class="user_info_top">
+                <h3>お客様情報</h3>
+                <div class="error_userinfo">
+                    <div class="error_icon">
+                        <img src="images/error_icon.png" alt="エラーアイコン">
+                    </div>
+                    <p>お客様情報を入力してください。</p>
                 </div>
-                <p>お客様情報を入力してください。</p>
             </div>
             <form action="dermavance.form.com" method="post" name="user_info">
                 <div class="user_info_inner">
@@ -223,26 +245,31 @@
                 </div>
                 <div class="delivery_address">
                     <h3>お届け先情報</h3>
-                    <input type="checkbox" name="another_address" id="another_address" value="お客様情報の住所と同じ" checked>
-                    <label for="another_address">お客様情報の住所と同じ</label>
+                    <div class="address_checkbox">
+                        <input type="checkbox" name="another_address" id="another_address" value="お客様情報の住所と同じ" checked>
+                        <label for="another_address">お客様情報の住所と同じ</label>
+                    </div>
                 </div>
             </form>
         </section>
         <section class="payment_method">
             <h2>お支払い情報</h2>
-            <h3>お支払い方法</h3>
-            <div class="error_payment">
-                <div class="error_icon">
-                    <img src="images/error_icon.png" alt="エラーアイコン">
+            <div class="payment_method_top">
+                <h3>お支払い方法</h3>
+                <div class="error_payment">
+                    <div class="error_icon">
+                        <img src="images/error_icon.png" alt="エラーアイコン">
+                    </div>
+                    <p>お支払い方法を選択してください。</p>
                 </div>
-                <p>お支払い方法を選択してください。</p>
             </div>
             <form action="dermavance.form.com" method="post" name="payment_method">
-                <input type="radio" name="payment" id="credit" value="クレジット支払い" checked><label for="credit">クレジット支払い</label>
-                <input type="radio" name="payment" id="convenience_store" value="コンビニ支払い"><label for="convenience_store">コンビニ支払い</label>
-                <input type="radio" name="payment" id="transfer" value="銀行振込"><label for="transfer">銀行振込</label>
+                <div class="input_payment">
+                    <div class="input_credit"><input type="radio" name="payment" id="credit" value="クレジット支払い" checked><label for="credit">クレジット支払い</label></div>
+                    <div class="input_convenience"><input type="radio" name="payment" id="convenience_store" value="コンビニ支払い"><label for="convenience_store">コンビニ支払い</label></div>
+                    <div class="input_trans"><input type="radio" name="payment" id="transfer" value="銀行振込"><label for="transfer">銀行振込</label></div>
+                </div>
                 <input type="submit" value="注文を確定する" id="order_submit">
-    
             </form>
         </section>
     </main>
