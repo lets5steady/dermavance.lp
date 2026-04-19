@@ -1223,4 +1223,24 @@ select {
 .spec_table td {
   padding: 1rem;
   background-color: #f5f6f8;
+}
+
+.page {
+  width: 100%;
+  background-color: #1c1f23;
+}
+.page > .l-inner {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  padding-block-start: 5rem;
+  padding-block-end: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .page > .l-inner {
+    padding-inline: 7.5rem;
+  }
 }/*# sourceMappingURL=style.css.map */
