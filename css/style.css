@@ -314,12 +314,14 @@ progress {
 }
 
 /* Max-width */
+/* Break-point */
 /* Colors */
 /* Spacing */
 /* Font_size */
 /* Font_weight */
 /* Fonts */
 /* Radius */
+/* PC版レイアウト */
 /* 各セクションのレイアウト(背景別） */
 /* 空のdivタグなどに背景画像挿入する時 */
 /* セクション内のflex、margin/paddingなし */
@@ -334,10 +336,10 @@ body {
   font-family: "Noto Sans", sans-serif, "Noto Sans JP", sans-serif;
   line-height: 1.6;
 }
-
-.wrapper {
-  margin-inline: auto;
-  max-width: 327px;
+@media (min-width: 1024px) {
+  body {
+    font-size: 1.125rem;
+  }
 }
 
 img {
@@ -359,10 +361,20 @@ h1 {
   font-size: 2rem;
   font-weight: 700;
 }
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 2.25rem;
+  }
+}
 
 h2 {
   font-size: 1.5rem;
   font-weight: 700;
+}
+@media (min-width: 1024px) {
+  h2 {
+    font-size: 2rem;
+  }
 }
 
 h3,
@@ -370,14 +382,25 @@ h3,
   font-size: 1.25rem;
   font-weight: 700;
 }
+@media (min-width: 1024px) {
+  h3,
+  .header_navi {
+    font-size: 1.5rem;
+  }
+}
 
 .weight_bold,
 label {
   font-weight: 700;
 }
 
-.weight_medium {
-  font-weight: 500;
+.notice {
+  font-size: 0.75rem;
+}
+@media (min-width: 1024px) {
+  .notice {
+    font-size: 0.875rem;
+  }
 }
 
 button {
@@ -386,15 +409,20 @@ button {
   display: block;
   margin-inline: auto;
   font-size: 1.125rem;
-  font-weight: 700;
   border-radius: 4px;
   transition: all 0.3s ease-out 0s;
+}
+@media (min-width: 1024px) {
+  button {
+    font-size: 1.25rem;
+  }
 }
 
 button.important,
 #order_submit {
   background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 100%), #7a96c4;
   color: #f5f6f8;
+  font-weight: 700;
 }
 button.important:hover,
 #order_submit:hover {
@@ -421,6 +449,12 @@ button.nomal:hover {
   display: flex;
   justify-content: space-between;
   margin-block-end: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .header_navi ul {
+    max-width: 50%;
+    margin-block-end: 5rem;
+  }
 }
 
 .header_navi ul li a {
@@ -454,6 +488,12 @@ button.nomal:hover {
   gap: 1rem;
   font-size: 0.875rem;
 }
+@media (min-width: 1024px) {
+  .shopping_guide {
+    gap: 1.5rem;
+    font-size: 1.125rem;
+  }
+}
 
 .shopping_guide li a {
   transition: all 0.3s ease-out 0s;
@@ -486,6 +526,11 @@ button.nomal:hover {
   justify-content: center;
   gap: 0.75rem;
 }
+@media (min-width: 1024px) {
+  .indicator-container {
+    gap: 1rem;
+  }
+}
 
 .dot {
   width: 12px;
@@ -493,6 +538,12 @@ button.nomal:hover {
   background-color: #c9ccd1;
   border-radius: 50%;
   transition: all 0.3s;
+}
+@media (min-width: 1024px) {
+  .dot {
+    width: 14px;
+    height: 14px;
+  }
 }
 
 .dot.is-active {
@@ -519,8 +570,9 @@ dialog {
 }
 
 .modal_img {
+  width: 80%; /* モーダルの横幅に対して常に80%のサイズにする */
+  max-width: 400px; /* ただし、PCなどの広い画面でも400px以上にはしない */
   margin-inline: auto;
-  max-width: 300px;
 }
 
 /* 背景（画面外）の暗さ */
@@ -530,13 +582,20 @@ dialog::backdrop {
 }
 
 .footer_inner {
+  max-width: 1200px;
+  margin-inline: auto;
   padding-inline: 1.5rem;
-  padding-block: 5rem;
+  padding-block-start: 10rem;
+  padding-block-end: 5rem;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  padding-block-start: 10rem;
   text-align: center;
+}
+@media (min-width: 1024px) {
+  .footer_inner {
+    padding-inline: 7.5rem;
+  }
 }
 
 .footer_inner .shopping_guide {
@@ -562,24 +621,55 @@ dialog::backdrop {
 
 .care,
 .beforeafter {
+  width: 100%;
+  background-color: #f5f6f8;
+}
+.care > .l-inner,
+.beforeafter > .l-inner {
+  max-width: 1200px;
+  margin-inline: auto;
   padding-inline: 1.5rem;
   padding-block: 5rem;
-  background-color: #f5f6f8;
   color: #1c1f23;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .care > .l-inner,
+  .beforeafter > .l-inner {
+    padding-inline: 7.5rem;
+    gap: 5rem;
+  }
 }
 
 .new_choice,
 .teatures,
 .how_to_use,
 .about_app {
+  width: 100%;
+  background-color: #1c1f23;
+}
+.new_choice > .l-inner,
+.teatures > .l-inner,
+.how_to_use > .l-inner,
+.about_app > .l-inner {
+  max-width: 1200px;
+  margin-inline: auto;
   padding-inline: 1.5rem;
-  padding-block: 5rem;
+  padding-block-start: 5rem;
+  padding-block-end: 5rem;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .new_choice > .l-inner,
+  .teatures > .l-inner,
+  .how_to_use > .l-inner,
+  .about_app > .l-inner {
+    padding-inline: 7.5rem;
+  }
 }
 
 .firstview_img {
@@ -614,12 +704,22 @@ dialog::backdrop {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  width: 100%;
+}
+.concept > .l-inner {
+  max-width: 1200px;
+  margin-inline: auto;
   padding-inline: 1.5rem;
   padding-block: 5rem;
   color: #f5f6f8;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .concept > .l-inner {
+    padding-inline: 7.5rem;
+  }
 }
 
 .new_choice_img {
@@ -665,27 +765,56 @@ dialog::backdrop {
 
 .product {
   background: linear-gradient(rgba(28, 31, 35, 0.5), rgba(28, 31, 35, 0.5)), url(../../images/bg_bubble_black.PNG) no-repeat center/cover;
+  width: 100%;
+}
+.product > .l-inner {
+  max-width: 1200px;
+  margin-inline: auto;
   padding-inline: 1.5rem;
   padding-block: 5rem;
   color: #f5f6f8;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .product > .l-inner {
+    padding-inline: 7.5rem;
+  }
+}
+.product {
   text-align: center;
 }
 
 .product_img {
-  max-width: 720px;
+  width: clamp(327px, 50vw, 720px);
   margin-inline: auto;
 }
 
 .quality_top,
 .five_modes {
+  width: 100%;
+  background-color: #1c1f23;
+}
+.quality_top > .l-inner,
+.five_modes > .l-inner {
+  max-width: 1200px;
+  margin-inline: auto;
   padding-inline: 1.5rem;
-  padding-block: 5rem;
+  padding-block-start: 5rem;
+  padding-block-end: 5rem;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .quality_top > .l-inner,
+  .five_modes > .l-inner {
+    padding-inline: 7.5rem;
+  }
+}
+.quality_top,
+.five_modes {
   text-align: center;
 }
 
@@ -695,13 +824,26 @@ dialog::backdrop {
 
 .design_point,
 .reasons_of_safety {
+  width: 100%;
+  background-color: #f5f6f8;
+}
+.design_point > .l-inner,
+.reasons_of_safety > .l-inner {
+  max-width: 1200px;
+  margin-inline: auto;
   padding-inline: 1.5rem;
   padding-block: 5rem;
-  background-color: #f5f6f8;
   color: #1c1f23;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .design_point > .l-inner,
+  .reasons_of_safety > .l-inner {
+    padding-inline: 7.5rem;
+    gap: 5rem;
+  }
 }
 
 .reasons_of_safety h2 {
@@ -732,12 +874,25 @@ dialog::backdrop {
 }
 
 .proceed_to_checkout {
+  width: 100%;
+  background-color: #1c1f23;
+}
+.proceed_to_checkout > .l-inner {
+  max-width: 1200px;
+  margin-inline: auto;
   padding-inline: 1.5rem;
-  padding-block: 5rem;
+  padding-block-start: 0;
+  padding-block-end: 5rem;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  padding-block-start: 0;
+}
+@media (min-width: 1024px) {
+  .proceed_to_checkout > .l-inner {
+    padding-inline: 7.5rem;
+  }
+}
+.proceed_to_checkout {
   text-align: center;
 }
 
@@ -769,10 +924,6 @@ dialog::backdrop {
   position: relative;
 }
 
-.color-name {
-  font-weight: 500;
-}
-
 /* 選択された時の白い外枠（擬似要素） */
 .color-option.is-active .color-circle::before {
   content: "";
@@ -791,10 +942,6 @@ dialog::backdrop {
   gap: 2.5rem;
 }
 
-.buy_text span {
-  font-size: 0.875rem;
-}
-
 .shopping_guide {
   text-align: center;
   gap: 0.75rem;
@@ -804,12 +951,27 @@ dialog::backdrop {
 .select_product,
 .user_info,
 .payment_method {
+  width: 100%;
+  background-color: #1c1f23;
+}
+.select_product > .l-inner,
+.user_info > .l-inner,
+.payment_method > .l-inner {
+  max-width: 1200px;
+  margin-inline: auto;
   padding-inline: 1.5rem;
-  padding-block: 5rem;
+  padding-block-start: 0;
+  padding-block-end: 5rem;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  padding-block-start: 0;
+}
+@media (min-width: 1024px) {
+  .select_product > .l-inner,
+  .user_info > .l-inner,
+  .payment_method > .l-inner {
+    padding-inline: 7.5rem;
+  }
 }
 
 .select_product,
@@ -827,6 +989,8 @@ dialog::backdrop {
 
 input,
 select {
+  width: -moz-fit-content;
+  width: fit-content;
   padding-inline: 0.75rem;
   background-color: #f5f6f8;
   color: #1c1f23;
@@ -857,7 +1021,7 @@ select {
   padding: 1rem;
   background-color: #c9ccd1;
   color: #1c1f23;
-  font-weight: 500;
+  font-weight: 700;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -901,24 +1065,13 @@ select {
   gap: 1rem;
 }
 
-.name_input,
-.kana_input {
+.name_input, .kana_input {
   display: flex;
-  gap: 0.75rem;
-  justify-content: space-between;
-}
-
-.name_input input,
-.kana_input input {
-  max-width: 150px;
+  gap: 1rem; /* 苗字と名前の間の隙間 */
 }
 
 .required {
   color: #E73434;
-  font-size: 0.75rem;
-}
-
-.notice {
   font-size: 0.75rem;
 }
 
@@ -950,12 +1103,23 @@ select {
 }
 
 .spec_top {
+  width: 100%;
+  background-color: #1c1f23;
+}
+.spec_top > .l-inner {
+  max-width: 1200px;
+  margin-inline: auto;
   padding-inline: 1.5rem;
-  padding-block: 5rem;
+  padding-block-start: 0;
+  padding-block-end: 5rem;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  padding-block-start: 0;
+}
+@media (min-width: 1024px) {
+  .spec_top > .l-inner {
+    padding-inline: 7.5rem;
+  }
 }
 
 .spec_top h2 {
