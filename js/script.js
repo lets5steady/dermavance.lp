@@ -106,3 +106,48 @@ colorOptions.forEach(option => {
 // 要素が存在すればaddし、なければ何もしない（エラーにならない）
   colorOptions[0]?.classList.add('is-active');
 }
+
+/* アニメーション */
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- 1. Intersection Observer (フェードアップ) ---
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1 // 10%見えたら実行
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // 一度表示されたら監視を止める場合は以下を有効化
+                // observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // アニメーションさせたい要素をすべて取得
+    const fadeElements = document.querySelectorAll('.fade-in-up');
+    fadeElements.forEach(el => observer.observe(el));
+
+
+    // --- 4. Simple Parallax (パララックス) ---
+    const parallaxElements = document.querySelectorAll('.parallax-target');
+
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        
+        parallaxElements.forEach(el => {
+            // 速度調整（0.1〜0.2くらいが高級感が出ます）
+            const speed = 0.15;
+            // 要素の位置を取得
+            const rect = el.getBoundingClientRect();
+            const elementTop = rect.top + scrolled;
+            // スクロールに合わせて位置をずらす計算
+            const offset = (scrolled - elementTop) * speed;
+            
+            el.style.transform = `translateY(${offset}px)`;
+        });
+    }, { passive: true }); // パフォーマンス向上のためのオプション
+});

@@ -325,6 +325,86 @@ progress {
 /* 各セクションのレイアウト(背景別） */
 /* 空のdivタグなどに背景画像挿入する時 */
 /* セクション内のflex、margin/paddingなし */
+/* ----------------------------------------------
+ * 1. スクロール連動フェードアップ用
+ * ---------------------------------------------- */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(40px);
+  /* 滑らかなイージング */
+  transition: opacity 1.2s cubic-bezier(0.25, 0.1, 0.25, 1), transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ----------------------------------------------
+ * 2. ヒーロー画像の「微」ズーム
+ * ---------------------------------------------- */
+.firstview {
+  overflow: hidden;
+  position: relative;
+}
+
+.firstview_img {
+  width: 100%;
+  aspect-ratio: 1.875;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(../images/firstview.jpg);
+  background-position: center;
+  margin-block-end: 2.5rem;
+  display: flex;
+  position: relative;
+  z-index: 1;
+}
+.firstview_img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  animation: subtleZoom 15s infinite alternate ease-in-out;
+}
+
+.firstview_title {
+  padding-inline: 1.5rem;
+  align-self: flex-end;
+  margin-block-end: -1.2em;
+  /* 320pxで24px、375pxで約32px、1440pxで36pxになるよう調整 */
+  font-size: clamp(1.5rem, 0.43rem + 4.57vw, 2.25rem);
+  position: relative;
+  z-index: 10;
+  margin-block-end: -1.2em;
+}
+
+/* 5秒で少し右上に進みながら拡大する */
+@keyframes perspectiveZoom {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.1) translate(1%, -1%);
+  }
+}
+.firstview_img::before {
+  animation: perspectiveZoom 5s infinite alternate ease-in-out;
+}
+
+/* ----------------------------------------------
+ * 4. 簡易パララックス用
+ * ---------------------------------------------- */
+.parallax-target {
+  will-change: transform; /* ブラウザの描画を最適化 */
+}
+
 html {
   font-size: 100%;
 }
@@ -644,16 +724,12 @@ dialog::backdrop {
 }
 
 .new_choice,
-.teatures,
-.how_to_use,
-.about_app {
+.teatures {
   width: 100%;
   background-color: #1c1f23;
 }
 .new_choice > .l-inner,
-.teatures > .l-inner,
-.how_to_use > .l-inner,
-.about_app > .l-inner {
+.teatures > .l-inner {
   max-width: 1200px;
   margin-inline: auto;
   padding-inline: 1.5rem;
@@ -665,30 +741,9 @@ dialog::backdrop {
 }
 @media (min-width: 1024px) {
   .new_choice > .l-inner,
-  .teatures > .l-inner,
-  .how_to_use > .l-inner,
-  .about_app > .l-inner {
+  .teatures > .l-inner {
     padding-inline: 7.5rem;
   }
-}
-
-.firstview_img {
-  width: 100%;
-  aspect-ratio: 1.875;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url(../../images/firstview.jpg);
-  background-position: center;
-  margin-block-end: 2.5rem;
-  display: flex;
-}
-
-.firstview_title {
-  padding-inline: 1.5rem;
-  align-self: flex-end;
-  margin-block-end: -1.2em;
-  /* 320pxで24px、375pxで約32px、1440pxで36pxになるよう調整 */
-  font-size: clamp(1.5rem, 0.43rem + 4.57vw, 2.25rem);
 }
 
 .firstview_inner {
@@ -700,7 +755,7 @@ dialog::backdrop {
 }
 
 .concept {
-  background-image: url(../../images/bg_SP.jpg);
+  background-image: url(../images/bg_SP.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -727,11 +782,23 @@ dialog::backdrop {
   aspect-ratio: 1;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(../../images/using_img01.jpg);
+  background-image: url(../images/using_img01.jpg);
 }
 
 .teatures_title {
   text-align: center;
+}
+
+.beforeafter_text {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.beforeafter_image {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .design {
@@ -743,6 +810,26 @@ dialog::backdrop {
   display: flex;
   flex-direction: column;
   gap: 7.5rem;
+  padding-block-start: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .design_inner {
+    padding-inline: 7.5rem;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .design_inner .how_to_use, .design_inner .about_app {
+    flex: 1;
+  }
+}
+
+.how_to_use,
+.about_app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 
 .using_img {
@@ -750,7 +837,7 @@ dialog::backdrop {
   aspect-ratio: 1;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(../../images/using_img02.jpg);
+  background-image: url(../images/using_img02.jpg);
 }
 
 .ai_img {
@@ -758,13 +845,11 @@ dialog::backdrop {
   aspect-ratio: 1;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(../../images/ai.jpg);
-  background-position: center;
-  background-position: center;
+  background-image: url(../images/ai.jpg);
 }
 
 .product {
-  background: linear-gradient(rgba(28, 31, 35, 0.5), rgba(28, 31, 35, 0.5)), url(../../images/bg_bubble_black.PNG) no-repeat center/cover;
+  background: linear-gradient(rgba(28, 31, 35, 0.5), rgba(28, 31, 35, 0.5)), url(../images/bg_bubble_black.PNG) no-repeat center/cover;
   width: 100%;
 }
 .product > .l-inner {
@@ -855,7 +940,7 @@ dialog::backdrop {
   aspect-ratio: 1.5;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(../../images/docter.jpg);
+  background-image: url(../images/docter.jpg);
 }
 
 .design_point01,
