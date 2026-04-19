@@ -128,7 +128,7 @@
                 DERMAVANCE TRINITY-Xは、5つの主要技術を統合しています。<br>
                 選び抜かれた作用を組み合わせることで、単一機能では得られない変化を生み出します。
             </p>
-            <button type="button" class="nomal">製品の詳細について</button>
+            <button type="button" class="nomal">製品の特徴について</button>
         </section>
         <section class="beforeafter">
             <h2>印象だけを、<br>
@@ -141,7 +141,7 @@
             <div class="beforeafter_img">
                 <img src="images/beforeafter.jpg" alt="症例写真">
             </div>
-            <button type="button" class="nomal">ご使用者様の声</button>
+            <button type="button" class="nomal modal-open" data-target="modal-1">ご使用者様の声</button>
         </section>
         <section class="design">
                 <h2>「続けられる設計が、<br>
@@ -150,12 +150,12 @@
                     <div class="how_to_use">
                         <h3>続けられる仕組み①</h3>
                         <div class="using_img"></div>
-                        <button type="button" class="nomal">無理なく続く設計について</button>
+                        <button type="button" class="nomal modal-open" data-target="modal-2">無理なく続く設計について</button>
                     </div>
                     <div class="about_app">
                         <h3>続けられる仕組み②</h3>
                         <div class="ai_img"></div>
-                        <button type="button" class="nomal">AI搭載アプリについて</button>
+                        <button type="button" class="nomal modal-open" data-target="modal-3">AI搭載アプリについて</button>
                     </div>
                 </div>
         </section>
@@ -191,5 +191,16 @@
             <div id="fixed_button"><button type="button" class="buy important">ご購入はこちら</button></div>
         </div>
     </footer>
+    <dialog id="modal-1" class="modal-unit">
+            <h3>ご使用者様の声</h3>
+            <p>
+                DERMAVANCE TRINITY-Xは、形を大きく変えるのではなく、<span>“印象を整える変化”</span>を重視しています。<br>
+                『フェイスラインの引き締まり、肌のなめらかさ、全体的な印象の明るさ』といった変化が、段階的に現れる設計です。
+            </p>
+            <div class="review_img">
+                <img src="images/review.jpg" alt="ご使用者様の口コミ">
+            </div>
+            <button class="nomal modal-close">閉じる</button>
+    </dialog>
 </body>
 </html>

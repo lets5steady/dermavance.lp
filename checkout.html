@@ -82,8 +82,8 @@
                     <span class="dot" data-index="2"></span>
                     <span class="dot" data-index="3"></span>
                 </div>
+                <h3>DERMAVANCE TRINITY-X</h3>
             </div>
-            <h3>DERMAVANCE TRINITY-X</h3>
             <form action="dermavance.form.com" method="post" name="select_product">
                 <div class="select_product_inner">
                     <div class="select_color">
@@ -265,11 +265,13 @@
             </div>
             <form action="dermavance.form.com" method="post" name="payment_method">
                 <div class="input_payment">
-                    <div class="input_credit"><input type="radio" name="payment" id="credit" value="クレジット支払い" checked><label for="credit">クレジット支払い</label></div>
-                    <div class="input_convenience"><input type="radio" name="payment" id="convenience_store" value="コンビニ支払い"><label for="convenience_store">コンビニ支払い</label></div>
-                    <div class="input_trans"><input type="radio" name="payment" id="transfer" value="銀行振込"><label for="transfer">銀行振込</label></div>
+                    <div class="method_type">
+                        <div class="input_credit"><input type="radio" name="payment" id="credit" value="クレジット支払い" checked><label for="credit">クレジット支払い</label></div>
+                        <div class="input_convenience"><input type="radio" name="payment" id="convenience_store" value="コンビニ支払い"><label for="convenience_store">コンビニ支払い</label></div>
+                        <div class="input_trans"><input type="radio" name="payment" id="transfer" value="銀行振込"><label for="transfer">銀行振込</label></div>
+                    </div>
+                    <input type="submit" value="注文を確定する" id="order_submit">
                 </div>
-                <input type="submit" value="注文を確定する" id="order_submit">
             </form>
         </section>
     </main>

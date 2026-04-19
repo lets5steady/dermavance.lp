@@ -244,13 +244,6 @@ textarea:focus {
 }
 
 /* Style select like a standard input */
-select {
-  -moz-appearance: none;
-  /* Firefox 36+ */
-  -webkit-appearance: none;
-  /* Chrome 41+ */
-}
-
 select::-ms-expand {
   display: none;
   /* Internet Explorer 11+ */
@@ -327,6 +320,9 @@ progress {
 /* Font_weight */
 /* Fonts */
 /* Radius */
+/* 各セクションのレイアウト(背景別） */
+/* 空のdivタグなどに背景画像挿入する時 */
+/* セクション内のflex、margin/paddingなし */
 html {
   font-size: 100%;
 }
@@ -389,7 +385,7 @@ button {
   padding-block: 0.5rem;
   display: block;
   margin-inline: auto;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 700;
   border-radius: 4px;
   transition: all 0.3s ease-out 0s;
@@ -486,7 +482,6 @@ button.nomal:hover {
 
 /* インジケーターの見た目 */
 .indicator-container {
-  margin-block-start: 2rem;
   display: flex;
   justify-content: center;
   gap: 0.75rem;
@@ -502,6 +497,27 @@ button.nomal:hover {
 
 .dot.is-active {
   background-color: #f5f6f8; /* 現在の画像は白くする */
+}
+
+/* モーダル自体のスタイル */
+dialog {
+  max-width: 60%;
+  padding: 1.5rem;
+  margin-inline: auto;
+  background-color: #c9ccd1;
+  color: #1c1f23;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* 背景（画面外）の暗さ */
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+  cursor: pointer; /* 画面外がクリック可能であることを示す */
 }
 
 .footer_inner {
@@ -655,7 +671,7 @@ button.nomal:hover {
   margin-inline: auto;
 }
 
-.detail,
+.quality_top,
 .five_modes {
   padding-inline: 1.5rem;
   padding-block: 5rem;
@@ -663,6 +679,10 @@ button.nomal:hover {
   flex-direction: column;
   gap: 2.5rem;
   text-align: center;
+}
+
+.quality_top {
+  padding-block-start: 0;
 }
 
 .design_point,
@@ -703,12 +723,13 @@ button.nomal:hover {
   border-bottom: 1px solid #c9ccd1;
 }
 
-.buy {
+.proceed_to_checkout {
   padding-inline: 1.5rem;
   padding-block: 5rem;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+  padding-block-start: 0;
   text-align: center;
 }
 
@@ -771,21 +792,33 @@ button.nomal:hover {
   gap: 0.75rem;
 }
 
+/* 共通 */
 .select_product,
 .user_info,
 .payment_method {
-  margin-inline: auto;
   padding-inline: 1.5rem;
   padding-block: 5rem;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+  padding-block-start: 0;
+}
+
+.select_product,
+.user_info h2,
+.payment_method h2 {
   text-align: center;
+}
+
+.carousel-container,
+.select_product_inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 input,
 select {
-  align-self: center;
   padding-inline: 0.75rem;
   background-color: #f5f6f8;
   color: #1c1f23;
@@ -793,12 +826,19 @@ select {
   border-radius: 4px;
 }
 
-.select_product_inner {
+.error_userinfo,
+.error_payment {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 1rem;
+  background-color: #c9ccd1;
+  color: #1c1f23;
+  font-size: 0.75rem;
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  gap: 0.75rem;
 }
 
+/* 商品選択 */
 .select_date p {
   padding-block-start: 0.5em;
   font-size: 0.875rem;
@@ -809,10 +849,10 @@ select {
   padding: 1rem;
   background-color: #c9ccd1;
   color: #1c1f23;
+  font-weight: 500;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  font-weight: 500;
 }
 
 .sub_total,
@@ -826,30 +866,12 @@ select {
   font-size: 1.25rem;
 }
 
-.user_info_top,
-.payment_method_top {
-  text-align: start;
-}
-
-.error_userinfo,
-.error_payment {
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 1rem;
-  background-color: #c9ccd1;
-  color: #1c1f23;
-  font-size: 0.75rem;
-  display: flex;
-  gap: 0.75rem;
-  align-self: center;
-}
-
+/* お客様情報 */
 .user_info_inner {
   padding-block-end: 5rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  justify-content: center;
 }
 
 .user_info_inner label {
@@ -874,8 +896,13 @@ select {
 .name_input,
 .kana_input {
   display: flex;
-  justify-content: center;
   gap: 0.75rem;
+  justify-content: space-between;
+}
+
+.name_input input,
+.kana_input input {
+  max-width: 150px;
 }
 
 .required {
@@ -894,18 +921,49 @@ select {
   gap: 2.5rem;
 }
 
-.payment_inner {
+/* お支払い方法 */
+.input_payment {
   display: flex;
   flex-direction: column;
+  gap: 2.5rem;
 }
 
-.input_payment {
-  padding-block-end: 5rem;
+.method_type {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
 #order_submit {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-inline: auto;
   border: none;
+}
+
+.spec_top {
+  padding-inline: 1.5rem;
+  padding-block: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-block-start: 0;
+}
+
+.spec_top h2 {
+  text-align: center;
+}
+
+.spec_table {
+  color: #1c1f23;
+  font-size: 0.875rem;
+}
+
+.spec_table th {
+  background-color: #c9ccd1;
+}
+
+.spec_table td {
+  padding: 1rem;
+  background-color: #f5f6f8;
 }/*# sourceMappingURL=style.css.map */
