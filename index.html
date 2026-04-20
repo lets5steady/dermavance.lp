@@ -51,9 +51,9 @@
 </head>
 <body>
     <header>
-            <h1 class="header_logo_img">
-                <img src="images/header_logo_transparent.png" alt="ロゴ">
-            </h1>
+            <div class="header_logo_img">
+                <img src="images/header_logo_transparent.png" alt="DERMAVANCE">
+            </div>
             <div class="header_navi">
                 <ul>
                     <li><a href="index.html">概要</a></li>
@@ -119,10 +119,10 @@
             </div>
             <div class="link-to-page important"><a href="buy.html">ご購入はこちら</a></div>
         </section>
-        <section class="teatures">
-            <h2 class="teatures_title">製品の特徴</h2> 
+        <section class="features">
+            <h2 class="features_title">製品の特徴</h2> 
             <div class="l-inner fade-in-up">
-                <div class="teatures_text">
+                <div class="features_text">
                     <h3>
                         なぜ、<br>
                         ここまでできるのか。
@@ -130,7 +130,7 @@
                     <p>DERMAVANCE TRINITY-Xは、5つの主要技術を統合しています。</p>
                     <p>選び抜かれた作用を組み合わせることで、単一機能では得られない変化を生み出します。</p>
                 </div>
-                <div class="teatures_img">
+                <div class="features_img">
                     <img src="images/five_modes.jpg" alt="５つの機能の図" parallax-target>
                 </div>
             </div>
@@ -197,9 +197,9 @@
                 <li><a href="privacy.html">-プライバシーポリシー</a></li>
             </ul>
             <div class="footer_logo">
-                <h1 class="footer_logo_img">
-                    <img src="images/footer_logo_transparent.png" alt="ロゴ">
-                </h1>
+                <div class="footer_logo_img">
+                    <img src="images/footer_logo_transparent.png" alt="DERMAVANCE">
+                </div>
                 <p><small>Copyright &copy;Dermavance Corporation</small></p>
             </div>
             <div class="link-to-page important" id="fixed_button"><a href="buy.html">ご購入はこちら</a></div>
@@ -215,7 +215,7 @@
                 <div class="modal_img">
                     <img src="images/review.jpg" alt="ご使用者様の口コミ">
                 </div>
-                <button class="nomal modal-close">閉じる</button>
+                <button type="button" class="nomal modal-close">閉じる</button>
             </div>
     </dialog>
     <dialog id="modal-2" class="modal-unit">
@@ -224,14 +224,14 @@
             <p>
                 ・スキンケアの延長で10分<br>
                 ・半身浴中でも使用可能（防水設計）<br>
-                ・手持ちの化粧水でも対応<br>
                 ・充電を忘れていてもすぐに使える急速充電<br>
+                ・専用ジェルだけでなく、お手持ちの化粧水にも対応<br>
                 “続けられる設計”を徹底しています。
             </p>
             <div class="modal_img">
                 <img src="images/gel.jpg" alt="専用ジェル">
             </div>
-            <button class="nomal modal-close">閉じる</button>
+            <button type="button" class="nomal modal-close">閉じる</button>
         </div>
     </dialog>
     <dialog id="modal-3" class="modal-unit">
@@ -245,9 +245,13 @@
             <div class="modal_img">
                 <img src="images/app.jpg" alt="AI搭載アプリ">
             </div>
-            <button class="nomal modal-close">閉じる</button>
+            <button type="button" class="nomal modal-close">閉じる</button>
         </div>
     </dialog>
-
+    <button id="page-top" type="button" aria-label="ページトップへ戻る">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <polyline points="4 15 12 7 20 15"/>
+        </svg>
+    </button> 
 </body>
 </html>

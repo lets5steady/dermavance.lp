@@ -490,18 +490,21 @@ label {
 }
 
 button,
-.link-to-page a {
+.link-to-page a,
+#order_submit {
   padding-inline: 1rem;
   padding-block: 0.5rem;
   display: block;
   margin-inline: auto;
   font-size: 1.125rem;
   border-radius: 4px;
+  border: none;
   transition: all 0.3s ease-out 0s;
 }
 @media (min-width: 1024px) {
   button,
-  .link-to-page a {
+  .link-to-page a,
+  #order_submit {
     font-size: 1.25rem;
   }
 }
@@ -579,12 +582,12 @@ button.nomal:hover {
   opacity: 1;
 }
 
-/* ページ遷移ボタン（a) */
+/* ページ遷移ボタン<a> */
 .to_buypage {
   display: inline-block;
 }
 
-/* フッター・購入ページ共通 */
+/* フッター・購入ページ共通　ショッピングガイド */
 .shopping_guide {
   width: 100%;
   display: flex;
@@ -606,7 +609,7 @@ button.nomal:hover {
   border-bottom: 1px dotted #c9ccd1;
 }
 
-/* 購入・購入手続きページ共通 */
+/* 購入・購入手続きページ共通　スライダー&インジケーター */
 .slider {
   display: flex;
   overflow-x: auto;
@@ -624,7 +627,6 @@ button.nomal:hover {
   scroll-snap-align: start; /* 画像の端で止まる */
 }
 
-/* インジケーターの見た目 */
 .indicator-container {
   display: flex;
   justify-content: center;
@@ -654,16 +656,16 @@ button.nomal:hover {
   background-color: #f5f6f8; /* 現在の画像は白くする */
 }
 
-/* モーダル自体のスタイル */
+/* モーダル */
 dialog {
   max-width: 50%;
+  min-width: 280px;
   margin: auto;
   border: none;
   border-radius: 4px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* モーダルの内側のスタイル */
 .modal_inner {
   padding: 1.5rem;
   background-color: #c9ccd1;
@@ -679,12 +681,66 @@ dialog {
   margin-inline: auto;
 }
 
-/* 背景（画面外）の暗さ */
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.6);
-  cursor: pointer; /* 画面外がクリック可能であることを示す */
+  cursor: pointer;
 }
 
+/* ページトップボタン */
+#page-top {
+  position: fixed;
+  bottom: 4.5rem;
+  right: 1.5rem;
+  z-index: 200;
+  width: 48px;
+  height: 48px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 100%), #454c56;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  cursor: pointer;
+  /* 矢印アイコン */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 登場・消滅アニメーション */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, visibility 0.35s ease, transform 0.35s ease, background 0.3s ease-out;
+}
+
+/* スクロールで表示されたとき */
+#page-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ホバー */
+#page-top:hover {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 100%), #2c2f35;
+}
+
+/* 矢印（SVG） */
+#page-top svg {
+  width: 20px;
+  height: 20px;
+  stroke: #fff;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  /* クリック時に少し跳ねる */
+  transition: transform 0.2s ease;
+}
+
+#page-top:active svg {
+  transform: translateY(-3px);
+}
+
+/* fixed_button（購入ボタン）がある場合の位置調整
+既存の #fixed_button の高さを考慮して bottom を設定済みのため
+このルールは任意で追加してください */
 .footer_inner {
   max-width: 1200px;
   margin-inline: auto;
@@ -832,7 +888,7 @@ dialog::backdrop {
   background-image: url(../images/using_img01.jpg);
 }
 
-.teatures {
+.features {
   width: 100%;
   padding-block: 5rem;
   display: flex;
@@ -840,7 +896,7 @@ dialog::backdrop {
   gap: 2.5rem;
 }
 
-.teatures .l-inner {
+.features .l-inner {
   max-width: 1200px;
   margin-inline: auto;
   padding-inline: 1.5rem;
@@ -849,7 +905,7 @@ dialog::backdrop {
   gap: 2.5rem;
 }
 @media (min-width: 1024px) {
-  .teatures .l-inner {
+  .features .l-inner {
     padding-inline: 7.5rem;
     flex-direction: row;
     align-items: center;
@@ -857,23 +913,23 @@ dialog::backdrop {
   }
 }
 
-.teatures_title {
+.features_title {
   text-align: center;
 }
 
-.teatures_text {
+.features_text {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 @media (min-width: 1024px) {
-  .teatures_text {
+  .features_text {
     flex: 4;
   }
 }
 
 @media (min-width: 1024px) {
-  .teatures_img {
+  .features_img {
     flex: 6;
   }
 }
@@ -1005,7 +1061,7 @@ dialog::backdrop {
 }
 
 .product_img {
-  width: clamp(327px, 50vw, 720px);
+  width: min(50vw, 720px);
   margin-inline: auto;
 }
 
@@ -1119,12 +1175,12 @@ dialog::backdrop {
   text-align: center;
 }
 
-.docter_img {
+.doctor_img {
   width: 100%;
   aspect-ratio: 1.5;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(../images/docter.jpg);
+  background-image: url(../images/doctor.jpg);
 }
 
 .proceed_to_checkout {
@@ -1286,7 +1342,7 @@ select {
 }
 
 .sub_total,
-.shippng,
+.shipping,
 .total_amount {
   display: flex;
   justify-content: space-between;
@@ -1370,13 +1426,6 @@ select {
   .method_type {
     gap: 2rem;
   }
-}
-
-#order_submit {
-  width: -moz-fit-content;
-  width: fit-content;
-  margin-inline: auto;
-  border: none;
 }
 
 .spec_top {
