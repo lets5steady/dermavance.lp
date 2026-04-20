@@ -48,7 +48,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" type="module"></script>
+    <!-- <script src="js/script.js" type="module"></script> -->
+    <script type="module" src="./js/main.js"></script>
 </head>
 <body>
     <header>
@@ -67,39 +68,32 @@
         </div>
     </header>
     <main class="page delivery">
-        <section class="page_header">
-            <h2>配送について</h2>
-        </section>
-
-        <section class="page_content">
-            <div class="content_block">
-                <h3>発送について</h3>
-                <p>ご注文いただいた商品は、通常2〜5営業日以内に発送いたします。</p>
-            </div>
-
-            <div class="content_block">
-                <h3>配送情報</h3>
-                <ul>
-                    <li>配送業者：当社指定の配送会社</li>
-                    <li>送料：全国一律〇〇円（税込）</li>
-                    <li>〇〇円以上のご購入で送料無料</li>
-                </ul>
-            </div>
-
-            <div class="content_block">
-                <h3>発送後について</h3>
-                <p>発送完了後、追跡番号を記載したメールをお送りいたします。</p>
-                <p>配送状況は各配送会社の追跡サービスにてご確認ください。</p>
-            </div>
-
-            <div class="content_block">
-                <h3>注意事項</h3>
-                <ul>
-                    <li>天候・交通状況・繁忙期により遅延する場合がございます</li>
-                    <li>海外発送には対応しておりません</li>
-                </ul>
-            </div>
-        </section>
+            <section class="l-inner fade-in-up">
+                <h2>配送について</h2>
+                <div class="content_block">
+                    <h3>発送について</h3>
+                    <p>ご注文いただいた商品は、通常2〜5営業日以内に発送いたします。</p>
+                </div>
+                <div class="content_block">
+                    <h3>配送情報</h3>
+                    <ul>
+                        <li>配送業者：当社指定の配送会社</li>
+                        <li>送料：無料</li>
+                    </ul>
+                </div>
+                <div class="content_block">
+                    <h3>発送後について</h3>
+                    <p>発送完了後、追跡番号を記載したメールをお送りいたします。</p>
+                    <p>配送状況は各配送会社の追跡サービスにてご確認ください。</p>
+                </div>
+                <div class="content_block">
+                    <h3>注意事項</h3>
+                    <ul>
+                        <li>天候・交通状況・繁忙期により遅延する場合がございます。</li>
+                        <li>海外発送には対応しておりません。</li>
+                    </ul>
+                </div>
+            </section>
     </main>
 
     <footer>

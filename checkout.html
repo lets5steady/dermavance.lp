@@ -48,7 +48,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" type="module"></script>
+    <!-- <script src="js/script.js" type="module"></script> -->
+    <script type="module" src="./js/main.js"></script>
 </head>
 <body>
     <header>
@@ -91,8 +92,8 @@
                             <label for="product_color">カラー：</label>
                             <select name="product_color" id="product_color">
                                 <option value="">カラーを選択</option>
-                                <option value="Silver">Black</option>
-                                <option value="Black">Silver</option>
+                                <option value="Black">Black</option>
+                                <option value="Silver">Silver</option>
                             </select>
                         </div>
                         <div class="select_Qty">
@@ -106,7 +107,7 @@
                         </div>
                         <div class="select_date">
                             <label for="input_date">お届け希望日：</label>
-                            <input type="date" name="input_date" id="input_date" value="{input_date}">
+                            <input type="date" name="input_date" id="input_date" value="">
                             <p>※最短お届け可能日は翌々日となります。</p>
                         </div>
                         <div class="select_wrapping">
@@ -122,15 +123,15 @@
                 <div class="total">
                         <div class="sub_total">
                             <p>商品合計</p>
-                            <p>505,000円</p>
+                            <p><span id="res_sub_total">0</span>円</p>
                         </div>
                         <div class="shippng">
                             <p>送料</p>
-                            <p>0円</p>
+                            <p><span id="res_shipping">0</span>円</p>
                         </div>
                         <div class="total_amount">
                             <p>合計（税込）</p>
-                            <p><span class="weight_bold">505,000</span>円</p>
+                            <p><span class="weight_bold" id="res_total_amount">0</span>円</p>
                         </div>
                 </div>
             </div>

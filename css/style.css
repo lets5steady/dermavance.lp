@@ -489,7 +489,8 @@ label {
   }
 }
 
-button {
+button,
+.link-to-page a {
   padding-inline: 1rem;
   padding-block: 0.5rem;
   display: block;
@@ -499,28 +500,40 @@ button {
   transition: all 0.3s ease-out 0s;
 }
 @media (min-width: 1024px) {
-  button {
+  button,
+  .link-to-page a {
     font-size: 1.25rem;
   }
 }
 
+.important a,
 button.important,
 #order_submit {
   background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 100%), #7a96c4;
   color: #f5f6f8;
   font-weight: 700;
 }
+.important a:hover,
 button.important:hover,
 #order_submit:hover {
   background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 100%), #7a96c4;
 }
 
+.nomal a,
 button.nomal {
   background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 100%), #454c56;
   color: #f5f6f8;
 }
+.nomal a:hover,
 button.nomal:hover {
   background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 100%), #454c56;
+}
+
+.important a,
+.nomal a {
+  text-decoration: none;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .header_logo_img {
@@ -564,6 +577,11 @@ button.nomal:hover {
 }
 .header_navi ul li a:hover::after, .header_navi ul li a.is-active::after {
   opacity: 1;
+}
+
+/* ページ遷移ボタン（a) */
+.to_buypage {
+  display: inline-block;
 }
 
 /* フッター・購入ページ共通 */
@@ -738,6 +756,18 @@ dialog::backdrop {
     gap: 5rem;
   }
 }
+@media (min-width: 1024px) {
+  .care .l-inner {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.care_text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
 .concept {
   background-image: url(../images/bg_SP.jpg);
@@ -781,6 +811,18 @@ dialog::backdrop {
     padding-inline: 7.5rem;
   }
 }
+@media (min-width: 1024px) {
+  .new_choice .l-inner {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.new_choice_text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
 .new_choice_img {
   width: 100%;
@@ -792,26 +834,48 @@ dialog::backdrop {
 
 .teatures {
   width: 100%;
-  background-color: #1c1f23;
+  padding-block: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
-.teatures > .l-inner {
+
+.teatures .l-inner {
   max-width: 1200px;
   margin-inline: auto;
   padding-inline: 1.5rem;
-  padding-block-start: 5rem;
-  padding-block-end: 5rem;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
 }
 @media (min-width: 1024px) {
-  .teatures > .l-inner {
+  .teatures .l-inner {
     padding-inline: 7.5rem;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
   }
 }
 
 .teatures_title {
   text-align: center;
+}
+
+.teatures_text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (min-width: 1024px) {
+  .teatures_text {
+    flex: 4;
+  }
+}
+
+@media (min-width: 1024px) {
+  .teatures_img {
+    flex: 6;
+  }
 }
 
 .beforeafter {
@@ -836,19 +900,31 @@ dialog::backdrop {
   .beforeafter .l-inner {
     padding-inline: 7.5rem;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
 .beforeafter_text {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 1rem;
+}
+@media (min-width: 1024px) {
+  .beforeafter_text {
+    flex: 4;
+  }
 }
 
 .beforeafter_image {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+@media (min-width: 1024px) {
+  .beforeafter_image {
+    flex: 6;
+  }
 }
 
 .beforeafter_image h3 {
@@ -1001,6 +1077,15 @@ dialog::backdrop {
 .safety_reason01 {
   padding-block-end: 2.5rem;
   border-bottom: 1px solid #c9ccd1;
+}
+
+.five_modes {
+  padding-block-end: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .five_modes {
+    padding-block-end: 7.5rem;
+  }
 }
 
 .five_modes .mode {
@@ -1238,9 +1323,23 @@ select {
   gap: 1rem;
 }
 
-.name_input, .kana_input {
+.name_input,
+.kana_input {
   display: flex;
   gap: 1rem; /* 苗字と名前の間の隙間 */
+}
+
+.name_input input,
+.kana_input input {
+  width: 0;
+  flex: 1;
+  min-width: 0;
+}
+@media (min-width: 1024px) {
+  .name_input input,
+  .kana_input input {
+    max-width: 25%;
+  }
 }
 
 .required {
@@ -1336,4 +1435,13 @@ select {
   .page > .l-inner {
     padding-inline: 7.5rem;
   }
+}
+
+.legal_list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.legal_list dt {
+  font-weight: 700;
 }/*# sourceMappingURL=style.css.map */
