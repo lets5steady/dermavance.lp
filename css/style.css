@@ -1428,6 +1428,68 @@ select {
   }
 }
 
+/* 入力項目のエラーメッセージ */
+.error_userinfo,
+.error_payment {
+  display: flex;
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: #f5f6f8;
+  border: 1px solid #7a96c4;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(231, 52, 52, 0.05);
+}
+.error_userinfo p,
+.error_payment p {
+  color: #E73434;
+  font-size: 0.875rem;
+  margin: 0;
+  text-align: left;
+}
+.error_userinfo p br,
+.error_payment p br {
+  display: block;
+  content: "";
+  margin-top: 6px;
+}
+.error_userinfo.is-error,
+.error_payment.is-error {
+  display: flex;
+  align-items: center;
+  animation: fadeInSlide 0.3s ease-out;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.input-error {
+  border-color: #E73434 !important;
+  background-color: rgba(231, 52, 52, 0.02);
+}
+.input-error:focus {
+  box-shadow: 0 0 0 3px rgba(231, 52, 52, 0.2);
+}
+
+#order_submit {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+#order_submit:disabled, #order_submit.is-disabled {
+  background-color: #c9ccd1 !important;
+  color: #f5f6f8 !important;
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
+  transform: none !important;
+}
+
 .spec_top {
   width: 100%;
   background-color: #1c1f23;
