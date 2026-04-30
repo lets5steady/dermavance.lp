@@ -33,13 +33,12 @@ export function initCheckout() {
     // 3. UI（エラーメッセージとボタン）を更新するメイン関数
     const updateUI = () => {
         let missingFields = [];
-
         // お客様情報の精査
         requiredFields.forEach(rule => {
             const field = document.getElementById(rule.id);
+            if (!field) return;
             const value = field.value.trim();
             const isValid = value !== '' && (!rule.pattern || rule.pattern.test(value));
-
             if (!isValid) {
                 missingFields.push(rule.label);
                 field.classList.add('input-error');
@@ -67,8 +66,10 @@ export function initCheckout() {
 
         // ボタンの活性化制御
         const canSubmit = missingFields.length === 0 && isPaymentSelected;
+        if (submitBtn) {
         submitBtn.disabled = !canSubmit;
         submitBtn.classList.toggle('is-disabled', !canSubmit);
+    }
     };
 
     // 4. イベントリスナーの設定
