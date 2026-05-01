@@ -1424,7 +1424,7 @@ select {
   gap: 0.75rem;
   margin: 1rem 0;
   padding: 1rem;
-  background-color: #f5f6f8;
+  background-color: #c9ccd1;
   border: 1px solid #7a96c4;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(231, 52, 52, 0.05);
@@ -1458,7 +1458,6 @@ select {
 }
 .input-error {
   border-color: #E73434 !important;
-  background-color: rgba(231, 52, 52, 0.02);
 }
 .input-error:focus {
   box-shadow: 0 0 0 3px rgba(231, 52, 52, 0.2);
