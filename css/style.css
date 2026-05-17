@@ -325,30 +325,23 @@ progress {
 /* 各セクションのレイアウト(背景別） */
 /* 空のdivタグなどに背景画像挿入する時 */
 /* セクション内のflex、margin/paddingなし */
-/* ----------------------------------------------
- * 1. スクロール連動フェードアップ用
- * ---------------------------------------------- */
-.fade-in-up {
+.js-fade-in {
   opacity: 0;
   transform: translateY(40px);
-  /* 滑らかなイージング */
   transition: opacity 1.2s cubic-bezier(0.25, 0.1, 0.25, 1), transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-.fade-in-up.is-visible {
+.js-fade-in.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ----------------------------------------------
- * 2. ヒーロー画像の「微」ズーム
- * ---------------------------------------------- */
 .firstview {
   overflow: hidden;
   position: relative;
 }
 
-.firstview_img {
+.firstview__img {
   width: 100%;
   aspect-ratio: 1.875;
   background-repeat: no-repeat;
@@ -360,7 +353,7 @@ progress {
   position: relative;
   z-index: 1;
 }
-.firstview_img::before {
+.firstview__img::before {
   content: "";
   position: absolute;
   top: 0;
@@ -371,10 +364,10 @@ progress {
   background-size: cover;
   background-position: center;
   z-index: -1;
-  animation: subtleZoom 15s infinite alternate ease-in-out;
+  animation: perspectiveZoom 5s infinite alternate ease-in-out;
 }
 
-.firstview_title {
+.firstview__title {
   max-width: 1200px;
   padding-inline: 1.5rem;
   align-self: flex-end;
@@ -383,15 +376,13 @@ progress {
   font-size: clamp(1.5rem, 0.43rem + 4.57vw, 2.25rem);
   position: relative;
   z-index: 10;
-  margin-block-end: -1.2em;
 }
 @media (min-width: 1024px) {
-  .firstview_title {
+  .firstview__title {
     padding-inline: 7.5rem;
   }
 }
 
-/* 5秒で少し右上に進みながら拡大する */
 @keyframes perspectiveZoom {
   0% {
     transform: scale(1) translate(0, 0);
@@ -400,17 +391,6 @@ progress {
     transform: scale(1.1) translate(1%, -1%);
   }
 }
-.firstview_img::before {
-  animation: perspectiveZoom 5s infinite alternate ease-in-out;
-}
-
-/* ----------------------------------------------
- * 4. 簡易パララックス用
- * ---------------------------------------------- */
-.parallax-target {
-  will-change: transform; /* ブラウザの描画を最適化 */
-}
-
 html {
   font-size: 100%;
 }
@@ -463,35 +443,36 @@ h2 {
   }
 }
 
-h3,
-.header_navi {
+h3 {
   font-size: 1.25rem;
   font-weight: 700;
 }
 @media (min-width: 1024px) {
-  h3,
-  .header_navi {
+  h3 {
     font-size: 1.5rem;
   }
 }
 
-.weight_bold,
 label {
   font-weight: 700;
 }
 
-.notice {
+.u-bold {
+  font-weight: 700;
+}
+
+.u-notice {
   font-size: 0.75rem;
 }
 @media (min-width: 1024px) {
-  .notice {
+  .u-notice {
     font-size: 0.875rem;
   }
 }
 
 button,
-.link-to-page a,
-#order_submit {
+.cta-btn a,
+#order-submit {
   padding-inline: 1rem;
   padding-block: 0.5rem;
   display: block;
@@ -503,49 +484,58 @@ button,
 }
 @media (min-width: 1024px) {
   button,
-  .link-to-page a,
-  #order_submit {
+  .cta-btn a,
+  #order-submit {
     font-size: 1.25rem;
   }
 }
 
-.important a,
-button.important,
-#order_submit {
+.cta-btn--primary a,
+button.cta-btn--primary,
+#order-submit {
   background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 100%), #7a96c4;
   color: #f5f6f8;
   font-weight: 700;
 }
-.important a:hover,
-button.important:hover,
-#order_submit:hover {
+.cta-btn--primary a:hover,
+button.cta-btn--primary:hover,
+#order-submit:hover {
   background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 100%), #7a96c4;
 }
 
-.nomal a,
-button.nomal {
+.cta-btn--secondary a,
+button.cta-btn--secondary {
   background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 100%), #454c56;
   color: #f5f6f8;
 }
-.nomal a:hover,
-button.nomal:hover {
+.cta-btn--secondary a:hover,
+button.cta-btn--secondary:hover {
   background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 100%), #454c56;
 }
 
-.important a,
-.nomal a {
+.cta-btn--primary a,
+.cta-btn--secondary a {
   text-decoration: none;
   width: -moz-fit-content;
   width: fit-content;
 }
 
-.header_logo_img {
+.site-header__logo-img {
   width: 160px;
   margin-inline: auto;
   margin-block: 2.5rem;
 }
 
-.header_navi ul {
+.site-header__nav {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+@media (min-width: 1024px) {
+  .site-header__nav {
+    font-size: 1.5rem;
+  }
+}
+.site-header__nav ul {
   max-width: 327px;
   margin-inline: auto;
   display: flex;
@@ -553,19 +543,19 @@ button.nomal:hover {
   margin-block-end: 2.5rem;
 }
 @media (min-width: 1024px) {
-  .header_navi ul {
+  .site-header__nav ul {
     max-width: 50%;
     margin-block-end: 5rem;
   }
 }
 
-.header_navi ul li a {
+.site-header__nav-link {
   position: relative;
   display: inline-block;
   padding-bottom: 8px;
   transition: all 0.3s ease-out 0s;
 }
-.header_navi ul li a::after {
+.site-header__nav-link::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -578,17 +568,12 @@ button.nomal:hover {
   opacity: 0;
   transition: all 0.3s ease-out 0s;
 }
-.header_navi ul li a:hover::after, .header_navi ul li a.is-active::after {
+.site-header__nav-link:hover::after, .site-header__nav-link.site-header__nav-link--active::after {
   opacity: 1;
 }
 
-/* ページ遷移ボタン<a> */
-.to_buypage {
-  display: inline-block;
-}
-
-/* フッター・購入ページ共通　ショッピングガイド */
-.shopping_guide {
+.site-footer__nav,
+.buy-nav {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -596,49 +581,49 @@ button.nomal:hover {
   font-size: 0.875rem;
 }
 @media (min-width: 1024px) {
-  .shopping_guide {
+  .site-footer__nav,
+  .buy-nav {
     gap: 1.5rem;
     font-size: 1rem;
   }
 }
 
-.shopping_guide li a {
+.site-footer__nav-link,
+.buy-nav-link {
   transition: all 0.3s ease-out 0s;
 }
-.shopping_guide li a:hover {
+.site-footer__nav-link:hover,
+.buy-nav-link:hover {
   border-bottom: 1px dotted #c9ccd1;
 }
 
-/* 購入・購入手続きページ共通　スライダー&インジケーター */
-.slider {
+.product-carousel__slider {
   display: flex;
   overflow-x: auto;
-  scroll-snap-type: x mandatory; /* 横方向に吸い付く設定 */
-  scrollbar-width: none; /* スクロールバーを隠す（Firefox） */
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
 }
-
-.slider::-webkit-scrollbar {
-  display: none; /* スクロールバーを隠す（Chrome/Safari） */
+.product-carousel__slider::-webkit-scrollbar {
+  display: none;
 }
-
-.slider img {
+.product-carousel__slider img {
   width: 100%;
   flex-shrink: 0;
-  scroll-snap-align: start; /* 画像の端で止まる */
+  scroll-snap-align: start;
 }
 
-.indicator-container {
+.product-carousel__dots {
   display: flex;
   justify-content: center;
   gap: 0.75rem;
 }
 @media (min-width: 1024px) {
-  .indicator-container {
+  .product-carousel__dots {
     gap: 1rem;
   }
 }
 
-.dot {
+.product-carousel__dot {
   width: 12px;
   height: 12px;
   background-color: #c9ccd1;
@@ -646,17 +631,15 @@ button.nomal:hover {
   transition: all 0.3s;
 }
 @media (min-width: 1024px) {
-  .dot {
+  .product-carousel__dot {
     width: 14px;
     height: 14px;
   }
 }
-
-.dot.is-active {
-  background-color: #f5f6f8; /* 現在の画像は白くする */
+.product-carousel__dot--active {
+  background-color: #f5f6f8;
 }
 
-/* モーダル */
 dialog {
   max-width: 50%;
   min-width: 280px;
@@ -666,7 +649,7 @@ dialog {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-.modal_inner {
+.modal__inner {
   padding: 1.5rem;
   background-color: #c9ccd1;
   color: #1c1f23;
@@ -675,9 +658,9 @@ dialog {
   gap: 1rem;
 }
 
-.modal_img {
-  width: 80%; /* モーダルの横幅に対して常に80%のサイズにする */
-  max-width: 400px; /* ただし、PCなどの広い画面でも400px以上にはしない */
+.modal__img {
+  width: 80%;
+  max-width: 400px;
   margin-inline: auto;
 }
 
@@ -686,8 +669,7 @@ dialog::backdrop {
   cursor: pointer;
 }
 
-/* ページトップボタン */
-#page-top {
+#page-top-btn {
   position: fixed;
   bottom: 4.5rem;
   right: 1.5rem;
@@ -698,31 +680,23 @@ dialog::backdrop {
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 50%;
   cursor: pointer;
-  /* 矢印アイコン */
   display: flex;
   align-items: center;
   justify-content: center;
-  /* 登場・消滅アニメーション */
   opacity: 0;
   visibility: hidden;
   transform: translateY(12px);
   transition: opacity 0.35s ease, visibility 0.35s ease, transform 0.35s ease, background 0.3s ease-out;
 }
-
-/* スクロールで表示されたとき */
-#page-top.is-visible {
+#page-top-btn.is-visible {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
-
-/* ホバー */
-#page-top:hover {
+#page-top-btn:hover {
   background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 100%), #2c2f35;
 }
-
-/* 矢印（SVG） */
-#page-top svg {
+#page-top-btn svg {
   width: 20px;
   height: 20px;
   stroke: #fff;
@@ -730,18 +704,13 @@ dialog::backdrop {
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
-  /* クリック時に少し跳ねる */
   transition: transform 0.2s ease;
 }
-
-#page-top:active svg {
+#page-top-btn:active svg {
   transform: translateY(-3px);
 }
 
-/* fixed_button（購入ボタン）がある場合の位置調整
-既存の #fixed_button の高さを考慮して bottom を設定済みのため
-このルールは任意で追加してください */
-.footer_inner {
+.site-footer__inner {
   max-width: 1200px;
   margin-inline: auto;
   padding-inline: 1.5rem;
@@ -753,21 +722,21 @@ dialog::backdrop {
   text-align: center;
 }
 @media (min-width: 1024px) {
-  .footer_inner {
+  .site-footer__inner {
     padding-inline: 7.5rem;
   }
 }
 
-.footer_inner .shopping_guide {
+.site-footer__nav {
   text-align: start;
 }
 
-.footer_logo_img {
+.site-footer__logo-img {
   width: 160px;
   margin-inline: auto;
 }
 
-#fixed_button {
+.fixed-cta {
   width: 100%;
   padding-block: 0.5rem;
   background-color: #1c1f23;
@@ -779,7 +748,7 @@ dialog::backdrop {
   z-index: 100;
 }
 
-.firstview_inner {
+.firstview__inner {
   padding-inline: 1.5rem;
   padding-block-end: 2.5rem;
   display: flex;
@@ -787,7 +756,7 @@ dialog::backdrop {
   gap: 2.5rem;
 }
 @media (min-width: 1024px) {
-  .firstview_inner {
+  .firstview__inner {
     padding-inline: 7.5rem;
   }
 }
@@ -819,7 +788,7 @@ dialog::backdrop {
   }
 }
 
-.care_text {
+.care__text {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -848,11 +817,11 @@ dialog::backdrop {
   }
 }
 
-.new_choice {
+.new-choice {
   width: 100%;
   background-color: #1c1f23;
 }
-.new_choice > .l-inner {
+.new-choice > .l-inner {
   max-width: 1200px;
   margin-inline: auto;
   padding-inline: 1.5rem;
@@ -863,24 +832,24 @@ dialog::backdrop {
   gap: 2.5rem;
 }
 @media (min-width: 1024px) {
-  .new_choice > .l-inner {
+  .new-choice > .l-inner {
     padding-inline: 7.5rem;
   }
 }
 @media (min-width: 1024px) {
-  .new_choice .l-inner {
+  .new-choice .l-inner {
     flex-direction: row;
     align-items: center;
   }
 }
 
-.new_choice_text {
+.new-choice__text {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.new_choice_img {
+.new-choice__img {
   width: 100%;
   aspect-ratio: 1;
   background-repeat: no-repeat;
@@ -895,7 +864,6 @@ dialog::backdrop {
   flex-direction: column;
   gap: 2.5rem;
 }
-
 .features .l-inner {
   max-width: 1200px;
   margin-inline: auto;
@@ -913,23 +881,23 @@ dialog::backdrop {
   }
 }
 
-.features_title {
+.features__title {
   text-align: center;
 }
 
-.features_text {
+.features__text {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 @media (min-width: 1024px) {
-  .features_text {
+  .features__text {
     flex: 4;
   }
 }
 
 @media (min-width: 1024px) {
-  .features_img {
+  .features__img {
     flex: 6;
   }
 }
@@ -942,7 +910,6 @@ dialog::backdrop {
   flex-direction: column;
   gap: 2.5rem;
 }
-
 .beforeafter .l-inner {
   max-width: 1200px;
   margin-inline: auto;
@@ -961,29 +928,28 @@ dialog::backdrop {
   }
 }
 
-.beforeafter_text {
+.beforeafter__text {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 @media (min-width: 1024px) {
-  .beforeafter_text {
+  .beforeafter__text {
     flex: 4;
   }
 }
 
-.beforeafter_image {
+.beforeafter__image {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 @media (min-width: 1024px) {
-  .beforeafter_image {
+  .beforeafter__image {
     flex: 6;
   }
 }
-
-.beforeafter_image h3 {
+.beforeafter__image h3 {
   text-align: center;
 }
 
@@ -992,14 +958,14 @@ dialog::backdrop {
   text-align: center;
 }
 
-.design_inner {
+.design__inner {
   display: flex;
   flex-direction: column;
   gap: 7.5rem;
   padding-block-start: 2.5rem;
 }
 @media (min-width: 1024px) {
-  .design_inner {
+  .design__inner {
     padding-inline: 7.5rem;
     flex-direction: row;
     gap: 1rem;
@@ -1007,21 +973,19 @@ dialog::backdrop {
   }
 }
 
-.how_to_use,
-.about_app {
+.design__col {
   height: 100%;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
 }
 @media (min-width: 1024px) {
-  .how_to_use,
-  .about_app {
+  .design__col {
     flex: 1;
   }
 }
 
-.using_img {
+.design__img--using {
   width: 100%;
   aspect-ratio: 1;
   background-repeat: no-repeat;
@@ -1029,7 +993,7 @@ dialog::backdrop {
   background-image: url(../images/using_img02.jpg);
 }
 
-.ai_img {
+.design__img--ai {
   width: 100%;
   aspect-ratio: 1;
   background-repeat: no-repeat;
@@ -1060,18 +1024,18 @@ dialog::backdrop {
   text-align: center;
 }
 
-.product_img {
+.product__img {
   width: min(50vw, 720px);
   margin-inline: auto;
 }
 
-.quality_top,
-.five_modes {
+.quality-top,
+.five-modes {
   width: 100%;
   background-color: #1c1f23;
 }
-.quality_top > .l-inner,
-.five_modes > .l-inner {
+.quality-top > .l-inner,
+.five-modes > .l-inner {
   max-width: 1200px;
   margin-inline: auto;
   padding-inline: 1.5rem;
@@ -1082,27 +1046,27 @@ dialog::backdrop {
   gap: 2.5rem;
 }
 @media (min-width: 1024px) {
-  .quality_top > .l-inner,
-  .five_modes > .l-inner {
+  .quality-top > .l-inner,
+  .five-modes > .l-inner {
     padding-inline: 7.5rem;
   }
 }
-.quality_top,
-.five_modes {
+.quality-top,
+.five-modes {
   text-align: center;
 }
 
-.quality_top .l-inner {
+.quality-top .l-inner {
   padding-block-start: 0;
 }
 
-.design_point,
-.reasons_of_safety {
+.design-point,
+.safety-reasons {
   width: 100%;
   background-color: #f5f6f8;
 }
-.design_point > .l-inner,
-.reasons_of_safety > .l-inner {
+.design-point > .l-inner,
+.safety-reasons > .l-inner {
   max-width: 1200px;
   margin-inline: auto;
   padding-inline: 1.5rem;
@@ -1113,69 +1077,67 @@ dialog::backdrop {
   gap: 2.5rem;
 }
 @media (min-width: 1024px) {
-  .design_point > .l-inner,
-  .reasons_of_safety > .l-inner {
+  .design-point > .l-inner,
+  .safety-reasons > .l-inner {
     padding-inline: 7.5rem;
     gap: 5rem;
   }
 }
 
-.design_point01,
-.design_point02,
-.safety_reason01,
-.safety_reason02 {
+.design-point__col,
+.safety-reasons__item {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
 }
 
-.design_point01,
-.safety_reason01 {
+.design-point__col--bordered,
+.safety-reasons__item--bordered {
   padding-block-end: 2.5rem;
   border-bottom: 1px solid #c9ccd1;
 }
 
-.five_modes {
+.five-modes {
   padding-block-end: 2.5rem;
 }
 @media (min-width: 1024px) {
-  .five_modes {
+  .five-modes {
     padding-block-end: 7.5rem;
   }
 }
 
-.five_modes .mode {
+.five-modes .mode {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   margin-inline: auto;
 }
 @media (min-width: 1024px) {
-  .five_modes .mode {
+  .five-modes .mode {
     flex-direction: row;
     align-items: center;
     gap: 1rem;
   }
-  .five_modes .mode.mode_reverse {
+  .five-modes .mode.mode--reverse {
     flex-direction: row-reverse;
   }
 }
 
-.mode_text {
+.mode__text {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.mode_img {
+.mode__img {
   width: clamp(327px, 50vw, 560px);
 }
 
-.reasons_of_safety h2 {
+.safety-reasons h2 {
   text-align: center;
 }
 
-.doctor_img {
+.safety-reasons__doctor-img {
   width: 100%;
   aspect-ratio: 1.5;
   background-repeat: no-repeat;
@@ -1183,11 +1145,11 @@ dialog::backdrop {
   background-image: url(../images/doctor.jpg);
 }
 
-.proceed_to_checkout {
+.proceed-to-checkout {
   width: 100%;
   background-color: #1c1f23;
 }
-.proceed_to_checkout > .l-inner {
+.proceed-to-checkout > .l-inner {
   max-width: 1200px;
   margin-inline: auto;
   padding-inline: 1.5rem;
@@ -1198,35 +1160,34 @@ dialog::backdrop {
   gap: 2.5rem;
 }
 @media (min-width: 1024px) {
-  .proceed_to_checkout > .l-inner {
+  .proceed-to-checkout > .l-inner {
     padding-inline: 7.5rem;
   }
 }
-.proceed_to_checkout {
+.proceed-to-checkout {
   text-align: center;
 }
 
-.product_description {
+.product-description {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-/* カラーセレクターの見た目 */
-.color-selector {
+.product-carousel__color-selector {
   margin-block: 2.5rem;
   display: flex;
   justify-content: center;
   gap: 1.5rem;
 }
 
-.color-option {
+.product-carousel__color-option {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
-.color-circle {
+.product-carousel__color-circle {
   margin-inline-end: 0.75rem;
   width: 24px;
   height: 24px;
@@ -1234,8 +1195,7 @@ dialog::backdrop {
   position: relative;
 }
 
-/* 選択された時の白い外枠（擬似要素） */
-.color-option.is-active .color-circle::before {
+.product-carousel__color-option--active .product-carousel__color-circle::before {
   content: "";
   position: absolute;
   top: -4px;
@@ -1246,27 +1206,21 @@ dialog::backdrop {
   border-radius: 50%;
 }
 
-.buy_text {
+.buy-text {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
 }
 
-.shopping_guide {
-  text-align: center;
-  gap: 0.75rem;
-}
-
-/* 共通 */
-.select_product,
-.user_info,
-.payment_method {
+.product-select,
+.customer-form,
+.payment-method {
   width: 100%;
   background-color: #1c1f23;
 }
-.select_product > .l-inner,
-.user_info > .l-inner,
-.payment_method > .l-inner {
+.product-select > .l-inner,
+.customer-form > .l-inner,
+.payment-method > .l-inner {
   max-width: 1200px;
   margin-inline: auto;
   padding-inline: 1.5rem;
@@ -1277,24 +1231,17 @@ dialog::backdrop {
   gap: 2.5rem;
 }
 @media (min-width: 1024px) {
-  .select_product > .l-inner,
-  .user_info > .l-inner,
-  .payment_method > .l-inner {
+  .product-select > .l-inner,
+  .customer-form > .l-inner,
+  .payment-method > .l-inner {
     padding-inline: 7.5rem;
   }
 }
 
-.select_product,
-.user_info h2,
-.payment_method h2 {
+.product-select,
+.customer-form h2,
+.payment-method h2 {
   text-align: center;
-}
-
-.carousel-container,
-.select_product_inner {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
 }
 
 input,
@@ -1312,14 +1259,20 @@ select {
   }
 }
 
-/* 商品選択 */
-.select_date p {
+.product-carousel,
+.product-select__options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.product-select__option-group p {
   padding-block-start: 0.5em;
   font-size: 0.875rem;
   color: #c9ccd1;
 }
 
-.total {
+.price-summary {
   padding: 1rem;
   background-color: #c9ccd1;
   color: #1c1f23;
@@ -1329,96 +1282,77 @@ select {
   gap: 2rem;
 }
 
-.sub_total,
-.shipping,
-.total_amount {
+.price-summary__row {
   display: flex;
   justify-content: space-between;
 }
-
-.total_amount .weight_bold {
+.price-summary__row--total .price-summary__value {
   font-size: 1.25rem;
 }
 
-/* お客様情報 */
-.user_info_inner {
+.customer-form__fields {
   padding-block-end: 5rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
-
-.user_info_inner label {
+.customer-form__fields label {
   display: flex;
   gap: 0.75rem;
   align-items: center;
 }
 
-.user_name,
-.name_kana,
-.post_code,
-.prefrcture,
-.city_name,
-.building_name,
-.phone_number,
-.email_address {
+.customer-form__group {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.name_input,
-.kana_input {
+.customer-form__name-inputs {
   display: flex;
   gap: 1rem;
 }
-
-.name_input input,
-.kana_input input {
+.customer-form__name-inputs input {
   width: 0;
   flex: 1;
   min-width: 0;
 }
 @media (min-width: 1024px) {
-  .name_input input,
-  .kana_input input {
+  .customer-form__name-inputs input {
     max-width: 25%;
   }
 }
 
-.required {
+.customer-form__required-badge {
   color: #E73434;
   font-size: 0.75rem;
 }
 
-.delivery_address {
+.customer-form__delivery {
   text-align: start;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
 }
 
-/* お支払い方法 */
-.input_payment {
+.payment-method__body {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
 }
 
-.method_type {
+.payment-method__options {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 @media (min-width: 1024px) {
-  .method_type {
+  .payment-method__options {
     gap: 2rem;
   }
 }
 
-.error_select_product,
-.error_userinfo,
-.error_payment {
+.error-box {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
@@ -1430,17 +1364,13 @@ select {
   box-shadow: 0 2px 4px rgba(231, 52, 52, 0.05);
   animation: fadeInSlide 0.3s ease-out;
 }
-.error_select_product p,
-.error_userinfo p,
-.error_payment p {
+.error-box p {
   color: #E73434;
   font-size: 0.875rem;
   margin: 0;
   text-align: left;
 }
-.error_select_product p br,
-.error_userinfo p br,
-.error_payment p br {
+.error-box p br {
   display: block;
   content: "";
   margin-top: 6px;
@@ -1456,31 +1386,32 @@ select {
     transform: translateY(0);
   }
 }
-.input-error {
-  border-color: #E73434 !important;
+.checkout-form__input--error {
+  border-color: #E73434;
+  background-color: #f5f6f8;
 }
-.input-error:focus {
+.checkout-form__input--error:focus {
   box-shadow: 0 0 0 3px rgba(231, 52, 52, 0.2);
 }
 
-#order_submit {
+#order-submit {
   transition: all 0.3s ease;
   cursor: pointer;
 }
-#order_submit:disabled, #order_submit.is-disabled {
-  background-color: #c9ccd1 !important;
-  color: #f5f6f8 !important;
+#order-submit:disabled, #order-submit.cta-btn--disabled {
+  background-color: #c9ccd1;
+  color: #f5f6f8;
   cursor: not-allowed;
   opacity: 0.7;
   box-shadow: none;
-  transform: none !important;
+  transform: none;
 }
 
-.spec_top {
+.spec-top {
   width: 100%;
   background-color: #1c1f23;
 }
-.spec_top > .l-inner {
+.spec-top > .l-inner {
   max-width: 1200px;
   margin-inline: auto;
   padding-inline: 1.5rem;
@@ -1491,25 +1422,22 @@ select {
   gap: 2.5rem;
 }
 @media (min-width: 1024px) {
-  .spec_top > .l-inner {
+  .spec-top > .l-inner {
     padding-inline: 7.5rem;
   }
 }
-
-.spec_top h2 {
+.spec-top h2 {
   text-align: center;
 }
 
-.spec_table {
+.spec-table {
   color: #1c1f23;
   font-size: 0.875rem;
 }
-
-.spec_table th {
+.spec-table th {
   background-color: #c9ccd1;
 }
-
-.spec_table td {
+.spec-table td {
   padding: 1rem;
   background-color: #f5f6f8;
 }
@@ -1534,11 +1462,11 @@ select {
   }
 }
 
-.legal_list {
+.legal-list {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
-.legal_list dt {
+.legal-list dt {
   font-weight: 700;
 }/*# sourceMappingURL=style.css.map */

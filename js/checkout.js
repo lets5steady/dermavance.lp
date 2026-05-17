@@ -3,32 +3,37 @@
  */
 export function initCheckout() {
     document.addEventListener('DOMContentLoaded', () => {
-        const submitBtn         = document.getElementById('order_submit');
-        const checkoutForm      = document.getElementById('checkout_form');
-        const selectProductText = document.querySelector('.error_select_product p');
-        const userInfoText      = document.querySelector('.error_userinfo p');
-        const paymentText       = document.querySelector('.error_payment p');
+        const submitBtn         = document.getElementById('order-submit');           
+        const checkoutForm      = document.getElementById('checkout-form');          
+        const selectProductText = document.querySelector('.error-box--select p');   
+        const userInfoText      = document.querySelector('.error-box--customer p'); 
+        const paymentText       = document.querySelector('.error-box--payment p');
 
         // 1. パターン定義
         const patterns = {
+            // 全角文字のみを許可
             zenkaku:  /^[^\x01-\x7E\xA1-\xDF]+$/,
+            // 全角カタカナのみを許可
             kana:     /^[ァ-ヶー]+$/,
+            // 数字7桁のみ許可
             postcode: /^\d{7}$/,
+            // 先頭が 0 で始まり、その後に数字が9〜10桁続く、合計10〜11桁の電話番号形式（ハイフンなし）を許可
             tel:      /^0\d{9,10}$/,
+            // @前後をそれぞれ分析し、メールアドレスのパターンのみ許可
             email:    /^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]\.)+[a-zA-Z]{2,}$/
         };
 
         // 2. 必須項目の定義（商品選択・お客様情報でグループ分け）
         const selectProductFields = [
-            { id: 'product_color', label: 'カラー' },
-            { id: 'product_Qty',   label: '個数' },
+            { id: 'product-color', label: 'カラー' },
+            { id: 'product-qty',   label: '個数' },
             { id: 'wrapping',      label: 'ギフトラッピング' },
         ];
         const userInfoFields = [
-            { id: 'last_name',       pattern: patterns.zenkaku,  label: 'お名前（姓）' },
-            { id: 'first_name',      pattern: patterns.zenkaku,  label: 'お名前（名）' },
-            { id: 'last_name_kana',  pattern: patterns.kana,     label: 'フリガナ（姓）' },
-            { id: 'first_name_kana', pattern: patterns.kana,     label: 'フリガナ（名）' },
+            { id: 'last-name',       pattern: patterns.zenkaku,  label: 'お名前（姓）' },
+            { id: 'first-name',      pattern: patterns.zenkaku,  label: 'お名前（名）' },
+            { id: 'last-name-kana',  pattern: patterns.kana,     label: 'フリガナ（姓）' },
+            { id: 'first-name-kana', pattern: patterns.kana,     label: 'フリガナ（名）' },
             { id: 'postcode',        pattern: patterns.postcode, label: '郵便番号' },
             { id: 'pref',            label: '都道府県' },
             { id: 'city',            pattern: patterns.zenkaku,  label: '市区町村番地' },
@@ -44,7 +49,7 @@ export function initCheckout() {
                 if (!field) return;
                 const value   = field.value.trim();
                 const isValid = value !== '' && (!pattern || pattern.test(value));
-                field.classList.toggle('input-error', !isValid);
+                field.classList.toggle('checkout-form__input--error', !isValid);
                 if (!isValid) missing.push(label);
             });
             return missing;
@@ -79,7 +84,7 @@ export function initCheckout() {
                            && isPaymentSelected;
             if (submitBtn) {
                 submitBtn.disabled = !canSubmit;
-                submitBtn.classList.toggle('is-disabled', !canSubmit);
+                submitBtn.classList.toggle('cta-btn--disabled', !canSubmit); // is-disabled → cta-btn--disabled
             }
 
             return canSubmit;
