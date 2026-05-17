@@ -1,4 +1,4 @@
-import { initHeaderNav } from './utils.js';
+import { initHeaderNav } from './header.js';
 import { initModal } from './modal.js';
 import { initSlider } from './slider.js';
 import { initAnimations } from './animation.js';
