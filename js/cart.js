@@ -1,14 +1,11 @@
 export const initCart = () => {
-    const getTwoDaysLater = () => {
-        const date = new Date();
-        date.setDate(date.getDate() + 2);
-        return date;
-    };
+    // 翌々日の日付を1回だけ生成し、各処理で使いまわす
+    const date = new Date();
+    date.setDate(date.getDate() + 2);
 
     // 購入ページの最短お届け可能日表示
     const deliveryEl = document.querySelector('.earliest-delivery-date');
     if (deliveryEl) {
-        const date = getTwoDaysLater();
         const days = ['日', '月', '火', '水', '木', '金', '土'];
         deliveryEl.textContent =
             `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日(${days[date.getDay()]})`;
@@ -17,7 +14,6 @@ export const initCart = () => {
     // 購入手続きページのお届け希望日選択
     const dateInput = document.getElementById('input-date');
     if (dateInput) {
-        const date = getTwoDaysLater();
         const yyyy = date.getFullYear();
         const mm   = String(date.getMonth() + 1).padStart(2, '0');
         const dd   = String(date.getDate()).padStart(2, '0');
